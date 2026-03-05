@@ -90,7 +90,7 @@ export default function StudentView({ student, onLogout }) {
       <header className="bg-gray-900 border-b border-gray-800 px-8 py-4 flex justify-between items-center sticky top-0 z-10">
         <div className="flex items-center gap-4">
           <span className="bg-green-600 text-white font-black text-sm px-3 py-1 rounded-lg tracking-widest">SUPER-30</span>
-          <span className="text-gray-300 font-semibold">নমস্কার, {student.name}!</span>
+          <span className="text-gray-300 font-semibold">Hello, {student.name}!</span>
         </div>
         <button
           className="border border-gray-700 text-gray-400 hover:text-white px-4 py-2 rounded-lg text-sm transition-all"
