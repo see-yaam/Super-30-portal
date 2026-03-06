@@ -46,3 +46,41 @@ export async function getStudentSubmissions(studentId) {
   if (error) console.error(error)
   return data || []
 }
+
+// Problems
+export async function getProblems() {
+  const { data, error } = await supabase
+    .from('problems')
+    .select('*')
+    .order('serial')
+  if (error) console.error(error)
+  return data || []
+}
+
+export async function getProblemsByCategory() {
+  const data = await getProblems()
+  const grouped = {}
+  data.forEach((p) => {
+    if (!grouped[p.category]) grouped[p.category] = []
+    grouped[p.category].push(p)
+  })
+  return grouped
+}
+
+export async function addProblemSubmission(submission) {
+  const { data, error } = await supabase
+    .from('submissions')
+    .insert([submission])
+  if (error) console.error(error)
+  return data
+}
+
+export async function getStudentProblemSubmissions(studentId) {
+  const { data, error } = await supabase
+    .from('submissions')
+    .select('*')
+    .eq('student_id', studentId)
+    .eq('type', 'problem')
+  if (error) console.error(error)
+  return data || []
+}
